@@ -42,6 +42,7 @@ class BooksController{
                                     $data['book_type'],
                                     $data['price'],
                                   ]);
+        header("Location: /bookStore/public/library/");
         try{
             if(!empty($results)){
                 $statusCode = 200;
@@ -53,6 +54,12 @@ class BooksController{
         }catch(Exception $e){
             echo("Ocurrio un error durante el registro de la base de datos");
         }
+    }
+    /**
+     * CREATE: Capturar los datos del formulario para el store
+     */
+    public function create(){
+        require('../src/views/booksView/create.php');
     }
 
     /**
@@ -69,13 +76,7 @@ class BooksController{
         $stm -> execute();
         $results = $stm-> fetchAll(\PDO::FETCH_ASSOC);
 
-        if(!empty($results)){
-            foreach($results as $result){
-                echo $result['title']."<br>";
-            }           
-        }
-        echo "No hay registros";
-   
+        require("../src/views/booksView/index.php");
     }
 
     /**
@@ -97,7 +98,28 @@ class BooksController{
         } else{
             echo "El registro no existe";
         }
-        
     }
+
+    /**
+     * DELETE: elimina un registro seleccionado
+     */
+    public function delete($id){
+        // Definir la Query de INSERT
+        $query = "DELETE FROM books WHERE id=:id";
+
+        // Preparar la query
+        $stm = $this->connection -> get_connection()->prepare($query);
+
+        // Ejecutar la query
+        $result = $stm -> execute([":id" => $id]);
+               
+        if($result){
+            // echo "El registro con el ID $id fue eliminado exitosamente";  
+            header("Location: /bookStore/public/library/");
+        } else{
+            echo "No se pudo eliminar el registro con id: $id";
+        }
+    }
+
 }
 
