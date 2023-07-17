@@ -18,4 +18,7 @@ $booksController = new BooksController;
 ]);*/
 
 // 3. Ejecutar el método index() del controlador
-$booksController -> index();
+// $booksController -> index();
+
+// 4. Ejecutar el método show() del controlador
+$booksController->show(3);

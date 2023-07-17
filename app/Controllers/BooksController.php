@@ -77,5 +77,27 @@ class BooksController{
         echo "No hay registros";
    
     }
+
+    /**
+     * SHOW: mostrar un registro específico
+     */
+    function show($id){
+        // Definir la Query de INSERT
+        $query = "SELECT * FROM books WHERE id=:id";
+
+        // Preparar la query
+        $stm = $this->connection -> get_connection()->prepare($query);
+
+        // Ejecutar la query
+        $stm -> execute([":id" => $id]);
+        $result = $stm-> fetch(\PDO::FETCH_ASSOC);
+        
+        if(!empty($result)){
+                echo $result['title'];  
+        } else{
+            echo "El registro no existe";
+        }
+        
+    }
 }
 
