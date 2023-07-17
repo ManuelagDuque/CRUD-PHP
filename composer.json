@@ -2,7 +2,7 @@
     "name": "manue/book-store",
     "autoload": {
         "psr-4": {
-            "Manue\\BookStore\\": "src/"
+            "Database\\":"database/"
         }
     },
     "authors": [
