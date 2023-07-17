@@ -11,8 +11,11 @@ $booksController = new BooksController;
 
 // 2. Ejecutar el método store() del controlador
 /*$booksController -> store([
-    "title" => "Matemáticas básicas",
-    "author" => "Sara Poyo",
-    "book_type" => "Académico",
-    "price" => 0
+    "title" => "El Principito",
+    "author" => "Antonie de Saint Exuperry",
+    "book_type" => "Cuentos",
+    "price" => 30
 ]);*/
+
+// 3. Ejecutar el método index() del controlador
+$booksController -> index();
