@@ -12,5 +12,7 @@
             "name": "ManuelagDuque"
         }
     ],
-    "require": {}
+    "require-dev": {
+        "phpunit/phpunit": "^10.2"
+    }
 }
