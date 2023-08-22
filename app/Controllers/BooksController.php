@@ -46,13 +46,12 @@ class BooksController{
         try{
             if(!empty($results)){
                 $statusCode = 200;
-                $response = "Se registró exitosamente el libro '{$data['title']}'
-                             en la base de datos";
-                echo $response;
-                return[$statusCode, $response, $results];
+                $response = "El libro fue registrado correctamente";
+                // echo $response;
+                return $response;
             }
         }catch(Exception $e){
-            echo("Ocurrio un error durante el registro de la base de datos");
+            return("Ocurrio un error durante el registro de la base de datos"); 
         }
     }
     /**
